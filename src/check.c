@@ -170,44 +170,13 @@ assign_test(const char *test_file)
 
     data = fill_data(fp);
 
-    fclose(fp);
-
     printf("exe: %s-----\n", data->exe[0]);
     printf("description:\n%s-----\n", data->description);
     printf("input:\n%s-----\n", data->input);
     printf("output:\n%s-----\n", data->expected_output[0]);
     printf("return: %d-----\n", data->return_code);
 
-    if ((fp = fopen("/tmp/pcb-input", "w")) == NULL)
-        err(errno, "assign_test: fopen");
-    for (int i = 0; data->input[i] != '\0'; i++)
-        fprintf(fp, "%c", data->input[i]);
     fclose(fp);
-
-    execl(data->exe[0], "< /tmp/pcb-input > /tmp/pcb-result", NULL);
-
-    if ((fp = fopen("/tmp/pcb-result", "r")) == NULL)
-        err(errno, "assign_test: fopen");
-
-    char output[4096]; int i;
-    for (i = 0; (output[i] = fgetc(fp)) != EOF; i++);
-    output[i+1] = '\0';
-
-    size_t          output_size = strlen(output);
-    size_t expected_output_size = strlen(data->expected_output[0]);
-
-    if (output_size == expected_output_size)
-    {
-        if (! strncmp(data->input, data->expected_output[0], output_size))
-            printf("Passou nos testes !\n");
-        else
-            printf("NÃO passou nos testes !\n");
-    }
-    else
-        printf("Entrada e Saída possuem tamanhos diferentes.\n");
-
-    fclose(fp);
-
     free_tinfo(data);
 
     /* success */
