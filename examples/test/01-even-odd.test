@@ -1,0 +1,17 @@
+----- exe 1 31
+./examples/exepath/even-odd.exe
+
+----- description 50
+Even or Odd test
+Check if a number is even or odd.
+
+----- stdin 9
+53 32 0 1
+
+----- stdout 2 8 8
+1 0 0 1
+
+2 1 1 2
+
+
+----- return 0
