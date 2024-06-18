@@ -14,7 +14,8 @@ Still in development.
 
 | - | Progress | Description |
 |:----------------:|:-:|:-:|
-| Testing          | --........ C | create pipes, use dup2, fork, etc to communicate between processes |  
+| Testing          | ==........ C | create pipes, use dup2, fork, etc to communicate between processes |  
 | Verification     | .......... X | compare the output with the expected output |  
 | Results          | .......... X | show a comprehensive report, highlighting passed and failed cases |
+| TUI              | .......... X | intuitive and easy to use text-based user interface (termbox) |
 | Efficient parser | .......... X | implement an efficient parser for the .test files |
